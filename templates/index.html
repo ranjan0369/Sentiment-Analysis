@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IMDB Sentiment Analysis</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        textarea { width: 80%; font-size: 16px; }
+        button { font-size: 16px; padding: 8px 16px; }
+        #result { margin-top: 20px; font-weight: bold; font-size: 18px; }
+        .positive { color: green; }
+        .negative { color: red; }
+    </style>
+</head>
+<body>
+    <h1>IMDB Sentiment Analysis</h1>
+    <textarea id="review" rows="6" placeholder="Enter your review here..."></textarea><br><br>
+    <button onclick="predictSentiment()">Predict Sentiment</button>
+    <div id="result"></div>
+
+    <script>
+        async function predictSentiment() {
+            const reviewText = document.getElementById("review").value;
+            if (!reviewText) {
+                alert("Please enter a review!");
+                return;
+            }
+
+            const response = await fetch("/predict", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ review: reviewText })
+            });
+
+            const data = await response.json();
+
+            if (data.error) {
+                document.getElementById("result").innerText = "Error: " + data.error;
+            } else {
+                const resultDiv = document.getElementById("result");
+                resultDiv.innerText = `Predicted Sentiment: ${data.predicted_sentiment.toUpperCase()} (Probability: ${data.probability})`;
+                resultDiv.className = data.predicted_sentiment === "positive" ? "positive" : "negative";
+            }
+        }
+    </script>
+</body>
+</html>
