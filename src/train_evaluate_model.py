@@ -1,4 +1,6 @@
 
+import pandas as pd
+from feature_extractor import extract_features
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
@@ -42,7 +44,9 @@ def train_and_evaluate(X, y, vectorizer):
 
     # print("Top Positive Words:", top_positive)
     # print("Top Negative Words:", top_negative)
-    return model, accuracy
+    return X, y, vectorizer, model, accuracy
 
 if __name__ == "__main__":
+    df=pd.read_csv("datasets/imdb_dataset_cleaned.csv")
+    X, y, vectorizer = extract_features(df)
     train_and_evaluate(X, y, vectorizer)
