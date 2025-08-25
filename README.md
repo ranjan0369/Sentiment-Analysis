@@ -38,7 +38,7 @@ The project uses a **IMDB Review Dataset** of 50000 labeled reviews (balanced be
 
 **Sentiment**: the label (positive or negative)
 
-You can download the dataset from [here](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews).
+You can download the dataset from <a href="https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews" target="_blank">here</a>.
 
 ---
 
@@ -49,7 +49,7 @@ It is important that our dataset is free from errors to generate a high quality 
 - Removing the HTML tags if any
 - Removing special characters in the text
 - Converting all the characters in lowercase
-- Removing stop words that that do not contribute in sentiment like a, the, for, and, is and so on.
+- Removing stop words that that do not contribute in sentiment like *a, the, for, and, is*.
 - Lemmatizing/Stemming i.e. reducing the words in their root form like surprising to surprise
 
 ---
@@ -156,10 +156,11 @@ If you want to run all the script at once, please run the following command
 python src/main.py
 ```
 This does the following:
+- Preprocesses the data
 
 - Trains Logistic Regression Classifier on the dataset.
 
-- Saves the trained model and vectorizers in models folder.
+- Saves the trained model and vectorizers in models (creates the model folder automatically if it does not exist) folder.
 
 - Loads the saved model and evaluates accuracy on the validation set.
 
@@ -194,6 +195,8 @@ http://127.0.0.1:5000/
 - Perform hyperparameter tuning for Logistic Regression
 
 - Add cross-validation for more robust evaluation
+
+- Dockerize the application and deploy in as a container.
 
 ---
 
