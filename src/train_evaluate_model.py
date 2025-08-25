@@ -7,8 +7,10 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 # import seaborn as sns
 # import matplotlib.pyplot as plt
 import joblib
+import os
 
 def train_and_evaluate(X, y, vectorizer):
+    os.makedirs("models", exist_ok=True)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # Train Logistic Regression model
