@@ -10,7 +10,6 @@ numpy = "*"
 scikit-learn = "*"
 nltk = "*"
 seaborn = "*"
-wordcloud = "*"
 flask = "*"
 
 [dev-packages]
