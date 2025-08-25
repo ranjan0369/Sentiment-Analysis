@@ -10,17 +10,14 @@ This is a beginner-friendly Machine Learning project for those who want to under
 - [Dataset](#dataset)  
 - [Data Preprocessing](#data-preprocessing)  
 - [Feature Extraction](#feature-extraction)  
-- [Training](#training)  
-- [Evaluation](#evaluation)  
+- [Training and Evaluaion](#training-and-evaluation)
 - [Results](#results)  
-- [Output Sample](#output-sample)  
-- [Future Improvements](#future-improvements)  
+- [Project Structure](#project-structure) 
 - [Installation](#installation)  
-- [Usage](#usage)  
-- [Project Structure](#project-structure)  
+- [Usage](#usage) 
+- [Output Sample](#output-sample)  
+- [Future Improvements](#future-improvements)    
 - [License](#license)  
-- [Contributing](#contributing)  
-- [Acknowledgments](#acknowledgments)  
 - [Contact](#contact)
 
 ---
@@ -38,6 +35,7 @@ The objective of the project is to automatically classify a given text review as
 The project uses a **IMDB Review Dataset** of 50000 labeled reviews (balanced between positive and negative). The dataset has two columns:
 
 **Reviews**: Text Reviews
+
 **Sentiment**: the label (positive or negative)
 
 You can download the dataset from [here](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews).
@@ -84,9 +82,7 @@ P(y=1∣x) = probability that the input belongs to the positive class
 
 Based on a chosen threshold (commonly 0.5), the model assigns the input to either the positive or negative sentiment class. In this project, text review was first converted into numerical feature representations i.e. TF-IDF, and then fed into the Logistic Regression classifier.
 
----
-
-## Evaluation
+### Evaluation
 
 Once trained, the model is tested on a validation set to measure its accuracy.  
 
@@ -101,17 +97,18 @@ We compute performance metrics such as:
 
 Example evaluation result:  
 
-```bash
-Validation Accuracy: 78.5%
-```
+![evaluation_result](images/train_evaluate_model.png)
+
 ---
 
 ## Project Structure
 ```bash
 project/
 ├── src/
-│   ├── train_model.py       # Script to train and save the model
-│   └── evaluate_model.py    # Script to evaluate the model
+│   ├── data_preprocess.py 
+│   ├── feature_extractor.py 
+│   ├── main.py       # Script to train and save the model
+│   └── train_evaluate_model.py    # Script to evaluate the model
 ├── dataset/          # Training dataset
 │   └── imdb_dataset.csv
 ├── models/
@@ -119,6 +116,9 @@ project/
 |   └── tfidf_vectorizer.pkl
 ├── Pipfile
 ├── Pipfile.lock
+├── templates
+    └── index.html
+├── app.py
 └── README.md
 ```
 ---
@@ -151,6 +151,11 @@ python src/data_preprocess.py
 python src/feature_extractor.py
 python train_evaluate_model.py
 ```
+If you want to run all the script at once, please run the following command
+```bash
+python src/main.py
+```
+This does the following:
 
 - Trains Logistic Regression Classifier on the dataset.
 
@@ -159,17 +164,30 @@ python train_evaluate_model.py
 - Loads the saved model and evaluates accuracy on the validation set.
 
 - Prints validation accuracy to the console.
+
+**Run Flask API**
+
+The project also include flask API and GUI so that user can enter a text review and get prediction. Run the following command to start the api:
+```bash
+python app.py
+```
+By default the api will be available at
+```bash
+http://127.0.0.1:5000/
+```
 ---
+
 
 ## Output Sample
 
-![Output Sample](images/output.jpg)
+![Positive Review](images/positive_review.png)
+![Negative Review](images/negative_review.png)
 
 ---
 
 ## Future Improvements
 
-- Experiment with advanced classifiers (SVM, Random Forest, XGBoost)
+- Experiment with advanced classifiers (Decision Tree, Random Forest, Naive Bayes)
 
 - Use deep learning models (e.g., LSTM, BERT) for higher accuracy
 
