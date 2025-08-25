@@ -15,7 +15,8 @@ This is a beginner-friendly Machine Learning project for those who want to under
 - [Project Structure](#project-structure) 
 - [Installation](#installation)  
 - [Usage](#usage) 
-- [Output Sample](#output-sample)  
+- [Output Sample](#output-sample)
+- [Limitations](#limitations) 
 - [Future Improvements](#future-improvements)    
 - [License](#license)  
 - [Contact](#contact)
@@ -186,6 +187,11 @@ http://127.0.0.1:5000/
 
 ---
 
+## Limitations
+Current model struggles with contextual nuances like negations. Future improvements include using n-gram TF-IDF, word embeddings, or transformer-based models (e.g., BERT) to better capture context.
+
+---
+
 ## Future Improvements
 
 - Experiment with advanced classifiers (Decision Tree, Random Forest, Naive Bayes)
@@ -196,7 +202,13 @@ http://127.0.0.1:5000/
 
 - Add cross-validation for more robust evaluation
 
-- Dockerize the application and deploy in as a container.
+- Currently using Pipenv. Explore alternatives like:
+
+    - Poetry: Better dependency resolution and packaging.
+
+    - Conda: Strong for managing ML/data science environments.
+
+- Dockerize the application and deploy the api as a container.
 
 ---
 
