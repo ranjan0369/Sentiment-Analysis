@@ -14,7 +14,7 @@ This is a beginner friendly ML project for those who want to understand the basi
 - [Training](#training)  
 - [Evaluation](#evaluation)  
 - [Results](#results)
-- [Outpur Sample](#output-sample)  
+- [Output Sample](#output-sample)  
 - [Future Improvements](#future-improvements)  
 
 ---
@@ -47,16 +47,18 @@ This is the next step after data collection. It is important that our dataset is
 
 ## Feature Extraction
 
-After the pre processing step is complete we are left with a cleaned and ready to train dataset. Then the next step is feature extraction. The goal here is to extract sentiment heavy words as much as possible. Since the model does not understand text, so we need a way to convert the words into numeric value. For this we will use Scikit learn's TF-IDF Vectorizer.
+After the pre processing step is complete we are left with a clean and ready to train dataset. Then the next step is **feature extraction**. The goal here is to extract sentiment heavy words as much as possible. Since the model does not understand text, we need a way to convert the words into numeric value. For this we will use Scikit learn's **TF-IDF Vectorizer**.
 
 - What is TF-IDF Vectorizer?
-It stands for Term Frequency - Inverser Document Frequency Vectorizer. Bascially, it provides balance between how frequently a word is repeating and how much unique is it. This means a frequently appearing word like 'movie' is assigned a low score whereas other words like good, fantastic, boring, slow which are sentiment heavy are assigned high score so that at the end we know which are the most significant features and which are least.
+
+It stands for Term Frequency - Inverse Document Frequency Vectorizer. Bascially, it provides balance between how frequently a word is repeating and how much unique is it. This means a frequently appearing word like 'movie' is assigned a low score whereas other words like good, fantastic, boring, slow which are sentiment heavy are assigned high score so that at the end we know which are the most significant features and which are least.
 
 ## Training and Evaluation
 
-After necessary features are extracter and converted into vectors, we are ready to feed into a classifier. Since, this is a binary classification problem, I implemented Logistic Regression Classifier in order to train our model.
+At the end of feature extraction process, we have vectors of features and we are ready to feed into a classifier. Since, this is a binary classification problem, I implemented Logistic Regression Classifier in order to train our model.
 
 - What is Logistic Regression Classifier?
+
 Logistic Regression is a linear model commonly used for binary classification problems such as predicting positive or negative sentiment. The model works by estimating the probability that a given input (e.g., a text review) belongs to a particular class. It applies a sigmoid (logistic) function to map the weighted sum of input features into a probability score between 0 and 1:
 
 P(y=1|x) = 1 / (1 + exp(-(w · x + b)))

@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 import nltk
-nltk.data.path.append("/Users/ranjan/US/projects/Sentiment-Analysis/nltk_data")
+nltk.data.path.append("nltk_data")
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import joblib
@@ -9,7 +9,7 @@ import re
 app = Flask(__name__)
 
 # Load model & vectorizer
-model = joblib.load("models/logreg_imdb_model.pkl")
+model = joblib.load("models/sentiment_model.pkl")
 vectorizer = joblib.load("models/tfidf_vectorizer.pkl")
 
 # Minimal stopwords list
